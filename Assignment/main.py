@@ -38,8 +38,10 @@ if response.status_code == 200:
             if tide_levels:
                 tide_data[date].append(sum(tide_levels) / len(tide_levels))  # Calculate daily average
 
-    # Limit to the first 5 days
-    dates = list(tide_data.keys())[8:16]
+    # show 28 days' data
+    start_date = 1
+    end_date = 25
+    dates = list(tide_data.keys())[start_date -1:end_date -1]
     avg_tide_levels = [tide_data[date][0] for date in dates]
 
     # Create a line chart with the average tide level per day
@@ -47,7 +49,7 @@ if response.status_code == 200:
     plt.plot(dates, avg_tide_levels, marker='o', linestyle='-', color='b')
 
     # The chart
-    plt.title("2021 Average Tide Levels (From Jan9 to Jan16)", fontsize=14)
+    plt.title(f"2021 Average Tide Levels (From Jan{start_date} to Jan{end_date})", fontsize=14)
     plt.xlabel("Date", fontsize=12)
     plt.ylabel("Average Tide Level (m)", fontsize=12)
     plt.xticks(rotation=45, ha='right')  
