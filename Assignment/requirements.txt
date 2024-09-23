@@ -1,5 +1,5 @@
 requests
-BeautifulSoup
-matplotlib.pyplot
+bs4
+matplotlib
 datetime
 collections
